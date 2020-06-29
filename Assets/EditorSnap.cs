@@ -8,7 +8,7 @@ public class EditorSnap : MonoBehaviour {
     
     [SerializeField] [Range(1f,20f)] float gridSize = 10f; //range restricts the range of the field
 
-    TextMesh texMesh;
+    TextMesh textMesh;
 
     private void Start()
     {
@@ -23,7 +23,10 @@ public class EditorSnap : MonoBehaviour {
 
         transform.position = new Vector3(snapPos.x, 0f, snapPos.z);
 
-        texMesh.text = snapPos.x/ gridSize + ", " + snapPos.z/gridSize; 
+        textMesh = GetComponentInChildren<TextMesh>();
+        string labelText = snapPos.x/ gridSize + ", " + snapPos.z/gridSize;
+        textMesh.text = labelText;
+        gameObject.name = labelText;
 
     }
 }
