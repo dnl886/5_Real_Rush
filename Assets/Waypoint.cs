@@ -20,8 +20,8 @@ public class Waypoint : MonoBehaviour {
     {
 
         return new Vector2Int(
-            Mathf.RoundToInt(transform.position.x / 10) * gridSize,
-            Mathf.RoundToInt(transform.position.z / 10) * gridSize
+            Mathf.RoundToInt(transform.position.x / 10) ,
+            Mathf.RoundToInt(transform.position.z / 10) 
         );
     }
 	
