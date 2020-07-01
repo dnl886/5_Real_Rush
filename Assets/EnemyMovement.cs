@@ -8,8 +8,8 @@ public class EnemyMovement : MonoBehaviour {
     [SerializeField] float dwellTime = 1f;
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(FollowPath());
-        print("Hey i'm back at the start");
+       // StartCoroutine(FollowPath());
+        //print("Hey i'm back at the start");
 	}
 	IEnumerator FollowPath()
     {

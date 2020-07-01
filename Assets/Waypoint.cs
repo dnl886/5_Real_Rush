@@ -24,13 +24,14 @@ public class Waypoint : MonoBehaviour {
             Mathf.RoundToInt(transform.position.z / 10) * gridSize
         );
     }
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	
 
-    internal static IEnumerator<Waypoint> GetEnumerator()
+    public void SetTopColor(Color color)
     {
-        throw new NotImplementedException();
+        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+        topMeshRenderer.material.color = color;
     }
+    
+
+    
 }

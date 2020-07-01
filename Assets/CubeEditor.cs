@@ -11,6 +11,7 @@ public class CubeEditor : MonoBehaviour {
     Vector3 gridPos;
 
     Waypoint waypoint;
+    
     private void Awake()
     {
         waypoint = GetComponent<Waypoint>();
@@ -48,5 +49,17 @@ public class CubeEditor : MonoBehaviour {
             waypoint.GetGridPos().y / gridSize;
         textMesh.text = labelText;
         gameObject.name = labelText;
+    }
+
+    void SetStartColor(Color color)
+    {
+        var startColor = transform.Find("0,0").GetComponent<MeshRenderer>();
+        startColor.material.color = color;
+    }
+
+    void SetEndColor(Color color)
+    {
+        var startColor = transform.Find("0,0").GetComponent<MeshRenderer>();
+        startColor.material.color = color;
     }
 }
