@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
-
-    [SerializeField] List<Waypoint> path;
+    
     [SerializeField] float dwellTime = 1f;
 	// Use this for initialization
 	void Start () {
-       // StartCoroutine(FollowPath());
-        //print("Hey i'm back at the start");
+        PathFinder pathFinder= FindObjectOfType<PathFinder>();
+        var path = pathFinder.GetPath();
+       StartCoroutine(FollowPath(path));
+        
 	}
-	IEnumerator FollowPath()
+
+
+
+	IEnumerator FollowPath(List<Waypoint> path)
     {
         print("Starting patrol.. ");
         foreach (Waypoint wayPoint in path)

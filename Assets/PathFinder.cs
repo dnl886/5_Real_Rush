@@ -10,7 +10,8 @@ public class PathFinder : MonoBehaviour
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
     Queue<Waypoint> queue = new Queue<Waypoint>();
     [SerializeField] bool isRunning = true; // todo make private
-    Waypoint searchCenter; // the current searchCenter
+    Waypoint searchCenter;
+    private List<Waypoint> path = new List<Waypoint>();
 
     Vector2Int[] directions = {
         Vector2Int.up,
@@ -18,15 +19,37 @@ public class PathFinder : MonoBehaviour
         Vector2Int.down,
         Vector2Int.left
     };
-    // Use this for initialization
-    void Start()
+
+    public List<Waypoint> GetPath()
     {
+
         LoadBlocks();
         ColorStartAndEnd();
-        Pathfind();
-        //ExploreNeighbours();
+        BreadthFirstSearch();
+        CreatePath();
+        return path;
+
+
     }
-    private void Pathfind()
+    // Use this for initialization
+    
+
+    void CreatePath()
+    {
+        path.Add(endWaypoint);
+
+        Waypoint previous = endWaypoint.exploredFrom;
+
+        while(previous != startWaypoint)
+        {
+            //add intermediate waypoints
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+        path.Add(startWaypoint);
+        path.Reverse();
+    }
+    private void BreadthFirstSearch()
     {
         queue.Enqueue(startWaypoint);
 
@@ -57,14 +80,11 @@ public class PathFinder : MonoBehaviour
         foreach (Vector2Int direction in directions)
         {
             Vector2Int neighbourCoordinates = searchCenter.GetGridPos() + direction;
-            try
+            if(grid.ContainsKey(neighbourCoordinates)) //if the grid has new neighbours 
             {
                 QueueNewNeighbours(neighbourCoordinates);
             }
-            catch
-            {
-                // do nothing
-            }
+            
         }
     }
     private void QueueNewNeighbours(Vector2Int neighbourCoordinates)
