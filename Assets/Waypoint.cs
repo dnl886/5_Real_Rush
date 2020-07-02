@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
 
+    [SerializeField] Color exploredColor;
+    //public is ok here as it is a data class
+    public bool isExplored = false;
+
+    public Waypoint exploredFrom;
     Vector2Int gridPos;
     const int gridSize = 10;
 	// Use this for initialization

@@ -2,93 +2,93 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathFinder : MonoBehaviour {
+public class PathFinder : MonoBehaviour
+{
 
-    [SerializeField] Waypoint startWayPoint, endWayPoint;
+    [SerializeField] Waypoint startWaypoint, endWaypoint;
+
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
-
     Queue<Waypoint> queue = new Queue<Waypoint>();
+    [SerializeField] bool isRunning = true; // todo make private
+    Waypoint searchCenter; // the current searchCenter
 
-    [SerializeField]bool isRunning = true;
-
-    Vector2Int[] directions =
-    {
+    Vector2Int[] directions = {
         Vector2Int.up,
         Vector2Int.right,
         Vector2Int.down,
         Vector2Int.left
-
     };
-
     // Use this for initialization
     void Start()
     {
         LoadBlocks();
         ColorStartAndEnd();
-        PathFind();
-        //ExploreNeighbors()
-;    }
-
-    void PathFind()
+        Pathfind();
+        //ExploreNeighbours();
+    }
+    private void Pathfind()
     {
-        queue.Enqueue(startWayPoint); //starting waypoint is the fist in the queue
+        queue.Enqueue(startWaypoint);
 
         while (queue.Count > 0 && isRunning)
         {
-            var searchCenter = queue.Dequeue();
-            print("Searching from: " + searchCenter);
-
-            HaltIfEndFound(searchCenter);
-            ExploreNeighbors(searchCenter);
+            searchCenter = queue.Dequeue();
+            HaltIfEndFound();
+            ExploreNeighbours();
             searchCenter.isExplored = true;
         }
 
-        print("Finnished pathfinding?");
+        // todo work-out path!
+        print("Finished pathfinding?");
     }
 
-    void HaltIfEndFound(Waypoint searchCenter)
+    private void HaltIfEndFound()
     {
-        if (searchCenter == endWayPoint)
+        if (searchCenter == endWaypoint)
         {
-            print("Searching from end node, therefore stopping");
             isRunning = false;
         }
     }
-    void ExploreNeighbors(Waypoint from)
-    {
 
+    private void ExploreNeighbours()
+    {
         if (!isRunning) { return; }
-        foreach(Vector2Int direction in directions)
+
+        foreach (Vector2Int direction in directions)
         {
-            Vector2Int neighborCoordinates = from.GetGridPos() + direction;
+            Vector2Int neighbourCoordinates = searchCenter.GetGridPos() + direction;
             try
             {
-                QueueNewNeighbors(neighborCoordinates);
+                QueueNewNeighbours(neighbourCoordinates);
             }
             catch
             {
-                //do nothing
+                // do nothing
             }
         }
     }
-
-    void QueueNewNeighbors(Vector2Int neighborCoordinates)
+    private void QueueNewNeighbours(Vector2Int neighbourCoordinates)
     {
-        Waypoint neighbor = grid[neighborCoordinates]; //try to find neighbors from our dictionary
-        if (neighbor.isExplored)
+        Waypoint neighbour = grid[neighbourCoordinates];
+        if (neighbour.isExplored || queue.Contains(neighbour))
         {
-            //do nothing
+            // do nothing
         }
         else
         {
-            neighbor.SetTopColor(Color.blue); // set their colors to blue
-            queue.Enqueue(neighbor);//the neighbors are now at the front of the queue
-            print("Queueing " + neighbor);
+            //neighbour.SetTopColor(Color.blue); // todo move later
+            queue.Enqueue(neighbour);
+
+            neighbour.exploredFrom = searchCenter;
         }
-        
+
     }
 
-    //useless rn
+    private void ColorStartAndEnd()
+    {
+        startWaypoint.SetTopColor(Color.green);
+        endWaypoint.SetTopColor(Color.red);
+    }
     private void LoadBlocks()
     {
         var waypoints = FindObjectsOfType<Waypoint>();
@@ -97,20 +97,13 @@ public class PathFinder : MonoBehaviour {
             var gridPos = waypoint.GetGridPos();
             if (grid.ContainsKey(gridPos))
             {
-                Debug.LogWarning("Overlapping block at: " + waypoint);
+                Debug.LogWarning("Skipping overlapping block " + waypoint);
             }
             else
             {
-                grid.Add(gridPos, waypoint); //if accessing settopcolor color.black you have to define it in the parameters
+                grid.Add(gridPos, waypoint);
             }
         }
-        print("Loaded " + grid.Count + " blocks");
     }
-
-    void ColorStartAndEnd()
-    {
-        startWayPoint.SetTopColor(Color.green);
-        endWayPoint.SetTopColor(Color.red);
-    }
-
 }
+

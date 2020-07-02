@@ -8358,6 +8358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114053405494476312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8369,6 +8372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114120642368841172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8391,6 +8397,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 114182061637188846}
 --- !u!114 &114222214121290804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8402,6 +8411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114230354892729080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8413,6 +8425,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114252862873032548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8446,6 +8461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114403814895509724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8457,6 +8475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114519302958458330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8479,6 +8500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114526889279343678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8490,6 +8514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114529815206130438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8501,6 +8528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114566478789632194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8523,6 +8553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114638834672585250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8545,8 +8578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6778c7a3894a340a4b80a507afa729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWayPoint: {fileID: 114182061637188846}
-  endWayPoint: {fileID: 114182061637188846}
+  startWaypoint: {fileID: 114182061637188846}
+  endWaypoint: {fileID: 114638618615265392}
   isRunning: 1
 --- !u!114 &114726998155908244
 MonoBehaviour:
@@ -8559,6 +8592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114751902840763562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8592,6 +8628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ba06dab5b331468eedfda0720d6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  isExplored: 0
+  exploredFrom: {fileID: 0}
 --- !u!114 &114838574641567802
 MonoBehaviour:
   m_ObjectHideFlags: 1
