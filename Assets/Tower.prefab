@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a001f4ac38e104db9ec2fa84152b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPan: {fileID: 4443902567725640}
+  objectToPan: {fileID: 0}
   targetEnemy: {fileID: 0}
 --- !u!114 &114659109250580462
 MonoBehaviour:
