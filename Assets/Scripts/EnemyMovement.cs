@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour {
         foreach (Waypoint wayPoint in path)
         {
             transform.position = wayPoint.transform.position; //will move where the waypoint resides every 1 seconds
-            print("Visiting block: " + wayPoint.name);
+            //print("Visiting block: " + wayPoint.name);
             yield return new WaitForSeconds(dwellTime);
 
         }
