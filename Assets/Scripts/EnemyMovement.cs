@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
     
-    [SerializeField] float dwellTime = 1f;
+    [Range(0f, 10f)][SerializeField] float dwellTime = 1f;
 	// Use this for initialization
 	void Start () {
         PathFinder pathFinder= FindObjectOfType<PathFinder>();

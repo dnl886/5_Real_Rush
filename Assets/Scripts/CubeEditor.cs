@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Waypoint))]
 public class CubeEditor : MonoBehaviour {
     
-    const int  gridSize = 10; //range restricts the range of the field
+    [Range(0f, 100f)][SerializeField] float  gridSize = 10; //range restricts the range of the field
     Vector3 gridPos;
 
     Waypoint waypoint;
@@ -62,4 +62,5 @@ public class CubeEditor : MonoBehaviour {
         var startColor = transform.Find("0,0").GetComponent<MeshRenderer>();
         startColor.material.color = color;
     }
+    
 }

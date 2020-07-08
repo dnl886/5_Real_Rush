@@ -7,14 +7,18 @@ public class Waypoint : MonoBehaviour {
 
     [SerializeField] Color exploredColor;
     //public is ok here as it is a data class
+
     public bool isExplored = false;
+    public bool isPlaceable = true;
+    [SerializeField] Tower towerPrefab;
 
     public Waypoint exploredFrom;
     Vector2Int gridPos;
     const int gridSize = 10;
+
 	// Use this for initialization
 	void Start () {
-		
+        Physics.queriesHitTriggers = true;
 	}
     public int getGridSize()
     {
@@ -36,7 +40,29 @@ public class Waypoint : MonoBehaviour {
         MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
         topMeshRenderer.material.color = color;
     }
-    
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isPlaceable)
+            {
+                print("Tower Placed At: " + gameObject.name);
+                Instantiate(towerPrefab, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                print("Can't place that there");
+            }
+
+            
+        }
+
+        
+    }
 
     
+
+
+
 }
