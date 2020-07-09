@@ -5,25 +5,21 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
     [Range(0.1f, 120f)]
-    [SerializeField] float secondsBetweenSpawn = 2f;
+    [SerializeField] float secondsBetweenSpawns = 2f;
     [SerializeField] EnemyMovement enemyPrefab;
+
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        StartCoroutine(RepeatedlySpawnEnemies());
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        StartCoroutine(SpawnEnemies());
-	}
-
-    IEnumerator SpawnEnemies()
+    IEnumerator RepeatedlySpawnEnemies()
     {
-        while (true) //forever
+        while (true) // forever
         {
             Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-            print("spawning");
-            yield return new WaitForSeconds(secondsBetweenSpawn);
+            yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }
 }

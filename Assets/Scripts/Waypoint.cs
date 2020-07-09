@@ -41,27 +41,24 @@ public class Waypoint : MonoBehaviour {
         topMeshRenderer.material.color = color;
     }
 
-    private void OnMouseOver()
+    void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // left click
         {
             if (isPlaceable)
             {
-                print("Tower Placed At: " + gameObject.name);
+                print(gameObject.name + " tower placement");
                 Instantiate(towerPrefab, transform.position, Quaternion.identity);
+                isPlaceable = false;
             }
             else
             {
-                print("Can't place that there");
+                print("Can't place here");
             }
-
-            
         }
-
-        
     }
 
-    
+
 
 
 

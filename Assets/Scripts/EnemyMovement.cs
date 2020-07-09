@@ -4,28 +4,26 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
     
+    [SerializeField] List<Waypoint> path; //so we cans see it
     [Range(0f, 10f)][SerializeField] float dwellTime = 1f;
-	// Use this for initialization
-	void Start () {
-        PathFinder pathFinder= FindObjectOfType<PathFinder>();
-        var path = pathFinder.GetPath();
-       StartCoroutine(FollowPath(path));
-        
-	}
-
-
-
-	IEnumerator FollowPath(List<Waypoint> path)
+    // Use this for initialization
+    // Use this for initialization
+    void Start()
     {
-        print("Starting patrol.. ");
-        foreach (Waypoint wayPoint in path)
-        {
-            transform.position = wayPoint.transform.position; //will move where the waypoint resides every 1 seconds
-            //print("Visiting block: " + wayPoint.name);
-            yield return new WaitForSeconds(dwellTime);
-
-        }
-        print("Ending patrol ");
+        PathFinder pathfinder = FindObjectOfType<PathFinder>();
+        var path = pathfinder.GetPath();
+        StartCoroutine(FollowPath(path));
     }
-	
+
+    IEnumerator FollowPath(List<Waypoint> path)
+    {
+        print("Starting patrol...");
+        foreach (Waypoint waypoint in path)
+        {
+            transform.position = waypoint.transform.position;
+            yield return new WaitForSeconds(2f);
+        }
+        print("Ending patrol");
+    }
+
 }

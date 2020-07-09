@@ -51,8 +51,8 @@ public class PathFinder : MonoBehaviour
         while(previous != startWaypoint)
         {
             //add intermediate waypoints
-            previous = previous.exploredFrom;
             SetAsPath(previous);
+            previous = previous.exploredFrom;
         }
         SetAsPath(startWaypoint);
         path.Reverse();
