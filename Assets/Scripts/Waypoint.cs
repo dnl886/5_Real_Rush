@@ -10,7 +10,6 @@ public class Waypoint : MonoBehaviour {
 
     public bool isExplored = false;
     public bool isPlaceable = true;
-    [SerializeField] Tower towerPrefab;
 
     public Waypoint exploredFrom;
     Vector2Int gridPos;
@@ -47,9 +46,7 @@ public class Waypoint : MonoBehaviour {
         {
             if (isPlaceable)
             {
-                print(gameObject.name + " tower placement");
-                Instantiate(towerPrefab, transform.position, Quaternion.identity);
-                isPlaceable = false;
+                FindObjectOfType<TowerFactory>().AddTower(this);
             }
             else
             {
