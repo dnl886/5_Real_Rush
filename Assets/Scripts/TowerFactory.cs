@@ -36,6 +36,6 @@ public class TowerFactory : MonoBehaviour {
         Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity);
         baseWaypoint.isPlaceable = false;
 
-        queue.Enqueue(towerPrefab);
+        queue.Enqueue(towerPrefab); /////probably vdelete
     }
 }
