@@ -14,9 +14,11 @@ public class Tower : MonoBehaviour {
 
     Transform targetEnemy;
     bool isMoving;
-    
-	
-	void Update () {
+
+    public Waypoint baseWaypoint; //what the tower is standing on
+
+
+    void Update () {
         SetTargetEnemy();
         if (targetEnemy)
         {
