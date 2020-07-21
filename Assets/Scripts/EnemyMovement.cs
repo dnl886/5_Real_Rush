@@ -6,8 +6,10 @@ public class EnemyMovement : MonoBehaviour {
     
     [SerializeField] List<Waypoint> path; //so we cans see it
     [Range(0f, 10f)][SerializeField] float dwellTime = 1f;
-    // Use this for initialization
-    // Use this for initialization
+
+    [SerializeField] ParticleSystem goalParticle;
+
+    [SerializeField] float movementPeriod = .5f;
     void Start()
     {
         PathFinder pathfinder = FindObjectOfType<PathFinder>();
@@ -21,9 +23,18 @@ public class EnemyMovement : MonoBehaviour {
         foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(movementPeriod);
         }
-        print("Ending patrol");
+        SelfDestruct();
     }
 
+    void SelfDestruct()
+    {
+        var vfx = Instantiate(goalParticle, transform.position, Quaternion.identity);
+        vfx.Play();
+
+        Destroy(vfx.gameObject, vfx.main.duration);
+        Destroy(gameObject);
+    }
 }
+

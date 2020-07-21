@@ -7,7 +7,8 @@ public class TowerFactory : MonoBehaviour {
 
     [SerializeField] int towerLimit = 8;
     [SerializeField] Tower towerPrefab;
-    bool isPlaceable;
+    [SerializeField] Transform towerParentTransform;
+    //bool isPlaceable;
 
     Queue<Tower> towerQueue = new Queue<Tower>();
 
@@ -31,18 +32,29 @@ public class TowerFactory : MonoBehaviour {
     private void InstantiateNewTower(Waypoint baseWaypoint)
     {
         var newTower = Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity);
+        newTower.transform.parent = towerParentTransform;
+        baseWaypoint.isPlaceable = false;
+
+        newTower.baseWaypoint = baseWaypoint;
         baseWaypoint.isPlaceable = false;
 
         towerQueue.Enqueue(newTower); /////probably vdelete
     }
-    void MoveExistingTower(Waypoint baseWaypoint)
+    void MoveExistingTower(Waypoint newBaseWaypoint)
     {
         print("Tower Limit Reached!!");
         //take bottom tower off queue
         var oldTower = towerQueue.Dequeue();
 
         //set the isPlaceable
+        oldTower.baseWaypoint.isPlaceable = true; // the tower we once used is placeable again
+
         //set the base waypoints
+        newBaseWaypoint.isPlaceable = false; //current one is now unplaceable
+
+        oldTower.baseWaypoint = newBaseWaypoint;
+
+        oldTower.transform.position = newBaseWaypoint.transform.position; // we actually move the tower now
 
         //put the old tower on the top of the queue
         towerQueue.Enqueue(oldTower);
