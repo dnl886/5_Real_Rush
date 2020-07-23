@@ -31,6 +31,7 @@ public class EnemyHit : MonoBehaviour {
     {
 
         hitPoints = hitPoints - 1;
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
         print("Current Hitpoints are: " + hitPoints);
         hitParticlePrefab.Play();
         myAudioSource.PlayOneShot(hitSFX);
@@ -42,7 +43,7 @@ public class EnemyHit : MonoBehaviour {
         vfx.Play();
         
         Destroy(vfx.gameObject, vfx.main.duration);
-        AudioSource.PlayClipAtPoint(deathSFX, transform.position);
+        
         Destroy(gameObject);
 
     }
